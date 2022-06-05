@@ -6,24 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/room.css">
-    
-    <script>const ROOM_ID = "<%= roomId %>"</script>
-    <script>const joined = "<%= joined %>"</script>
+    <script>const ROOM_ID = "<%= roomId %>"
+    </script>
     <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js" defer></script>
+
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="/main.js" defer></script>
-    
+
 </head>
 <body>
-    <div class="meet-area">
-        <!-- Remote Video Element-->
-        <video id="remote-video"></video>
+    <div id="videoGrid"></div>
+    
 
-        <!-- Local Video Element-->
-        <video id="local-video"></video>
-        <div class="meet-controls-bar">
-            <button onclick="startScreenShare()">Screen Share</button>
-        </div>
-    </div>
+
 </body>
 </html>
