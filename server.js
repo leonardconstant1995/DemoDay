@@ -9,6 +9,9 @@ const server = require("http").Server(app)
 const io = require("socket.io")(server)
 //uuid creates a unique id for each user and chat room so users/rooms are not confused between each other
 const {v4: uuidV4} =require("uuid")
+const peerServer = ExpressPeerServer(server, {
+  debug: true
+});
 var port     = process.env.PORT || 8080;
 const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
@@ -37,6 +40,7 @@ mongoose.connect(configDB.url, (err, database) => {
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
+app.use('/peerjs', peerServer);
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
@@ -60,14 +64,21 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // launch ======================================================================
 io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
+    console.log("room id:", roomId, "|","user id:", userId)
     socket.join(roomId)
-    socket.to(roomId).emit('user-connected', userId)
+    socket.to(roomId).emit('user-connected', userId);
+    // messages
+    socket.on('message', (message) => {
+      //send message to the same room
+      io.to(roomId).emit('createMessage', message)
+  }); 
 
     socket.on('disconnect', () => {
       socket.to(roomId).emit('user-disconnected', userId)
     })
-    console.log("room id:", roomId, "|","user id:", userId)
   })
 })
+
+
 server.listen(port);
 console.log(`http://localhost:${port}/`);
