@@ -3,7 +3,7 @@ module.exports = function(app, passport, db, uuidV4) {
 // normal routes ===============================================================
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
-      res.render(`index.ejs`)
+      res.render(`login.ejs`)
         // res.render('index.ejs');
     });
 
@@ -27,15 +27,52 @@ module.exports = function(app, passport, db, uuidV4) {
   })
 
     // PROFILE SECTION =========================
-    app.get('/main', isLoggedIn, function(req, res) {
+    app.get('/profile', isLoggedIn, function(req, res) {
         db.collection('messages').find().toArray((err, result) => {
           if (err) return console.log(err)
-          res.render('main.ejs', {
+          res.render('profileActivity.ejs', {
             user : req.user,
             messages: result
           })
         })
     });
+    app.get('/main', function(req, res) {
+        db.collection('messages').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('index.ejs', {
+            user : req.user,
+            messages: result
+          })
+        })
+    });
+    app.get('/roomRoom', function(req, res) {
+        db.collection('messages').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('old_main.ejs', {
+            user : req.user,
+            messages: result
+          })
+        })
+    });
+    app.get('/messenger', function(req, res) {
+        db.collection('messages').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('messenger.ejs', {
+            user : req.user,
+            messages: result
+          })
+        })
+    });
+    app.get('/language', function(req, res) {
+        db.collection('languages').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('languages.ejs', {
+            user : req.user,
+            messages: result
+          })
+        })
+    });
+
   //   app.get('/profile', isLoggedIn, function(req, res) {
   //     db.collection('messages').find().toArray((err, result) => {
   //     db.collection('chat').find({
@@ -85,6 +122,8 @@ module.exports = function(app, passport, db, uuidV4) {
         res.send(result)
       })
     })
+
+    
 
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {

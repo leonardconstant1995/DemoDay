@@ -6,6 +6,7 @@ const myPeer = new Peer(undefined, {
   host: '/',
   port: '443'
 })
+
 let myVideoStream;
 const myVideo = document.createElement('video')
 myVideo.classList.add('myVideo')
@@ -145,6 +146,7 @@ const setPlayVideo = () => {
   `
   document.querySelector('.main__video_button').innerHTML = html;
 }
+
 
 
 
@@ -319,10 +321,10 @@ const setPlayVideo = () => {
 // //     addVideoStream(video, userVideoStream)
 // //   })
 
-// //   call.on('close', () => {
-// //     video.remove()
-// //   })
-// // }
+  // call.on('close', () => {
+  //   video.remove()
+  // })
+
 
 // // function addVideoStream(video, stream) {
 // //   video.srcObject = stream
