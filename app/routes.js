@@ -107,6 +107,13 @@ module.exports = function(app, passport, db, uuidV4) {
         res.redirect('/profile')
       })
     })
+    app.post('/languagesSend', (req, res) => {
+      db.collection('languages').save({target: req.body.target, native: req.body.native}, (err, result) => {
+        if (err) return console.log(err)
+        console.log('saved to database')
+        res.redirect('/main')
+      })
+    })
 
     app.put('/messages', (req, res) => {
       db.collection('messages')

@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <form action="post">
+    <form action="/languageSend" method="post">
         <label for="languages">Select your Target Language</label>
         
-        <select name="languages" id="targetLanguages">
+        <select name="languages" id="targetLanguages" name="target">
             <option value="English">English</option>
             <option value="French">French</option>
             <option value="Spanish">Spanish</option>
@@ -27,7 +27,7 @@
 
         <label for="yourLanguages">Select your Native Language</label>
 
-        <select name="yourLanguages" id="nativeLanguages">
+        <select name="yourLanguages" id="nativeLanguages" name="native">
             <option value="English">English</option>
             <option value="French">French</option>
             <option value="Spanish">Spanish</option>
