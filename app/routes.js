@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db, uuidV4, ObjectId) {
+module.exports = function(app, passport, db, uuidV4) {
 
 // normal routes ===============================================================
     // show the home page (will also have our login links)
@@ -108,9 +108,7 @@ module.exports = function(app, passport, db, uuidV4, ObjectId) {
     //   })
     // })
     app.post('/languagesSend', (req, res) => {
-      db.collection('languages').save({user_id: ObjectId(req.user._id),
-        langauge: req.body.language, 
-        yourLanguage: req.body.yourLanguage}, (err, result) => {
+      db.collection('languages').save({langauge: req.body.language, yourLanguage: req.body.yourLanguage}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/main')
