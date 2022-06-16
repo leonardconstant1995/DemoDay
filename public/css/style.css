@@ -8407,7 +8407,8 @@ textarea.form-control-lg {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1020; }
+  z-index: 1020;
+  display: none; }
 
 @media (min-width: 576px) {
   .sticky-sm-top {
