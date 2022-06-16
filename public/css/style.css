@@ -27074,6 +27074,10 @@ button:focus {
       color: #ffffff;
       background-color: rgba(255, 255, 255, 0.15);
       border-radius: 5px; }
+  
+  .goodbye{
+    display: none;
+  }
 
 /**=====================
     breadcrumb css start
