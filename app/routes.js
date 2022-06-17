@@ -1,5 +1,5 @@
 module.exports = function(app, passport, db, uuidV4) {
-
+var ObjectId = require('mongodb').ObjectId;
 // normal routes ===============================================================
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
@@ -131,6 +131,27 @@ module.exports = function(app, passport, db, uuidV4) {
       })
     })
 
+    app.post('/language', (req, res) => {
+      console.log(req.user, "LookHere!!!!!",req.body)
+      db.collection('user')
+      .findOneAndUpdate({_id: ObjectId(req.user._id)}, {
+        $set: {
+          local :{
+            email: req.user.email,
+            password: req.user.password,
+            targetLanguage: req.body.language,
+            nativeLanguage: req.body.yourLanguage
+          }
+          // local.targetLanguage: req.body.language, local.nativelanguage: req.body.yourLanguage
+        }
+      }, {
+        sort: {_id: -1},
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.redirect('/main')
+      })
+    })
+
     
 
     app.delete('/messages', (req, res) => {
@@ -188,7 +209,7 @@ module.exports = function(app, passport, db, uuidV4) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/main', // redirect to the secure profile section
+            successRedirect : '/language', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
