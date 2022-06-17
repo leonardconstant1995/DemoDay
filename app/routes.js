@@ -133,23 +133,35 @@ var ObjectId = require('mongodb').ObjectId;
 
     app.post('/language', (req, res) => {
       console.log(req.user, "LookHere!!!!!",req.body)
-      db.collection('user')
-      .findOneAndUpdate({_id: ObjectId(req.user._id)}, {
-        $set: {
-          local :{
-            email: req.user.email,
-            password: req.user.password,
-            targetLanguage: req.body.language,
-            nativeLanguage: req.body.yourLanguage
-          }
-          // local.targetLanguage: req.body.language, local.nativelanguage: req.body.yourLanguage
-        }
-      }, {
-        sort: {_id: -1},
-      }, (err, result) => {
-        if (err) return res.send(err)
+      let userId = ObjectId(req.user._id)
+      db.collection('languages').save({
+        userId: req.user._id,
+        email: req.user.local.email,
+        name: req.user.local.name,
+        langauge: req.body.language, 
+        yourLanguage: req.body.yourLanguage}, (err, result) => {
+        if (err) return console.log(err)
+        console.log('saved to database')
         res.redirect('/main')
+        console.log(req.body.target)
       })
+      // db.collection('languages')
+      // .findOneAndUpdate({_id: ObjectId(req.session.passport.user)}, {
+      //   $set: {
+      //     local :{
+      //       email: req.user.email,
+      //       password: req.user.password,
+      //       targetLanguage: req.body.language,
+      //       nativeLanguage: req.body.yourLanguage
+      //     }
+      //     // local.targetLanguage: req.body.language, local.nativelanguage: req.body.yourLanguage
+      //   }
+      // }, {
+      //   sort: {_id: -1},
+      // }, (err, result) => {
+      //   if (err) return res.send(err)
+      //   res.redirect('/main')
+      // })
     })
 
     
