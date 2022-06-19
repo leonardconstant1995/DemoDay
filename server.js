@@ -14,9 +14,9 @@ webPush.setVapidDetails('mailto:test@test.com', publicVapidKeys, privateVapidKey
 
 var app      = express();
 const server = require("http").Server(app)
-//socket id lets us communicate live between computers to get chat/videochat to render. it is only visual. Doesnt save anything to db.
+
 const io = require("socket.io")(server)
-//uuid creates a unique id for each user and chat room so users/rooms are not confused between each other
+
 const {v4: uuidV4} = require("uuid")
 const { ExpressPeerServer } = require('peer');
 const peerServer = ExpressPeerServer(server, {
@@ -45,30 +45,30 @@ mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
   require('./app/routes.js')(app, passport, db, uuidV4);
-}); // connect to our database
+}); 
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); 
 
-// set up our express application
+
 app.use('/peerjs', peerServer);
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.json()); // get information from html forms
+app.use(morgan('dev')); 
+app.use(cookieParser()); 
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 
-app.set('view engine', 'ejs'); // set up ejs for templating
+app.set('view engine', 'ejs'); 
 
-// required for passport
+
 app.use(session({
-    secret: 'rcbootcamp2021b', // session secret
+    secret: 'rcbootcamp2021b',
     resave: true,
     saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.session()); 
+app.use(flash()); 
 
 
 // launch ======================================================================
