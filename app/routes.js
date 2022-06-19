@@ -134,7 +134,7 @@ var ObjectId = require('mongodb').ObjectId;
     app.post('/language', (req, res) => {
       console.log(req.user, "LookHere!!!!!",req.body)
       let userId = ObjectId(req.user._id)
-      db.collection('languages').save({
+      db.collection('languages').insertOne({
         userId: req.user._id,
         email: req.user.local.email,
         name: req.user.local.name,
