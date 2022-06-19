@@ -28,20 +28,45 @@ var ObjectId = require('mongodb').ObjectId;
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('users').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profileActivity.ejs', {
             user : req.user,
-            messages: result
+            email: req.user
+            // ObjectId : req.user._id
           })
         })
     });
     app.get('/main', function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('languages').find().toArray((err, result) => {
           if (err) return console.log(err)
+          let userData = result.find(result => String(result.userId) == String(req.user._id))
+          let matchedUsers = []
+          let feedLimit = 5
+          
+          for(let i = 0; i < result.length; i++){
+            console.log("User data", userData.language, "result", result[i].yourLanguage)
+            if(String(userData.language) === String(result[i].yourLanguage)){
+              console.log("found a match")
+              matchedUsers.push(result[i])
+            }
+          }
+          console.log("Matched Users", matchedUsers)
+          console.log("MatchedUsers.length", matchedUsers.length)
+          if(matchedUsers.length === 0){
+            matchedUsers = result
+          }
+
+          if(matchedUsers.length < 5){
+            feedLimit = matchedUsers.length
+          }
+
+
           res.render('index.ejs', {
             user : req.user,
-            messages: result
+            feedLimit: feedLimit,
+            // ObjectId : req.user._id
+            matchedUsers: matchedUsers
           })
         })
     });
@@ -138,7 +163,7 @@ var ObjectId = require('mongodb').ObjectId;
         userId: req.user._id,
         email: req.user.local.email,
         name: req.user.local.name,
-        langauge: req.body.language, 
+        language: req.body.language, 
         yourLanguage: req.body.yourLanguage}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')

@@ -436,7 +436,7 @@
                                             <span class="available-stats online"></span>
                                         </div>
                                         <div class="media-body d-none d-md-block">
-                                            <h4>Josephin water</h4>
+                                            <h4><%= user.local.name%></h4>
                                             <span>active now</span>
                                         </div>
                                     </div>
@@ -1433,7 +1433,7 @@
                                         <span class="available-stats online"></span>
                                     </div>
                                     <div class="media-body d-none d-md-block">
-                                        <h4>Josephin water</h4>
+                                        <h4><%= user.local.name%></h4>
                                         <span>active now</span>
                                     </div>
                                 </div>
@@ -1575,6 +1575,7 @@
                         </div>
                     </div>
                     <div>
+                        <% for(let i = 0; i < feedLimit; i++){ %>
                         <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
                             <div class="adaptive-overlay orange-overlay"></div>
                             <div class="story-bg">
@@ -1582,7 +1583,7 @@
                                     data-adaptive-background='1' alt="">
                             </div>
                             <div class="story-content">
-                                <h6>Anna Mull</h6>
+                                <h6><%= matchedUsers[i].name%></h6>
                                 <span>active now</span>
                             </div>
                             <div class="story-setting setting-dropdown">
@@ -1594,7 +1595,7 @@
                                         <ul>
                                             <li>
                                                 <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
+                                                        data-feather="volume-x"></i>mute <%= matchedUsers[i].name%></a>
                                             </li>
                                             <li>
                                                 <a href=""><i class="icon-font-light iw-16 ih-16"
@@ -1605,231 +1606,9 @@
                                 </div>
                             </div>
                         </div>
+                        <%}%>
                     </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay pink-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/2.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>josephin water</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay skin-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/1.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>josephin water</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay yellow-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/3.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>Petey Cruiser</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay skin-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/5.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>Paul Molive</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay pink-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/4.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>Anna Sthesia</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay blue-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/7.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>Paige Turner</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="story-box" data-bs-toggle="modal" data-bs-target="#storyModel">
-                            <div class="adaptive-overlay"></div>
-                            <div class="story-bg">
-                                <img src="/images/story/8.jpg" class="img-fluid bg-img"
-                                    data-adaptive-background='1' alt="">
-                            </div>
-                            <div class="story-content">
-                                <h6>Bob Frapples</h6>
-                                <span>active now</span>
-                            </div>
-                            <div class="story-setting setting-dropdown">
-                                <div class="btn-group custom-dropdown arrow-none dropdown-sm">
-                                    <a href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icon-light iw-13 ih-13" data-feather="sun"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right custom-dropdown">
-                                        <ul>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="volume-x"></i>mute josephin</a>
-                                            </li>
-                                            <li>
-                                                <a href=""><i class="icon-font-light iw-16 ih-16"
-                                                        data-feather="user"></i>view profile</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- stroy section end -->
@@ -1882,9 +1661,9 @@
                                 </a>
                                 <div class="profile-detail">
                                     <a href="/profile">
-                                        <h2>kelin jasen <span>❤</span></h2>
+                                        <h2><%= user.local.name%><span>❤</span></h2>
                                     </a>
-                                    <h5>kelin.jasen156@gmail.com</h5>
+                                    <h5><%= user.local.email%></h5>
                                     <div class="description">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                         </p>
