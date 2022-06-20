@@ -4,12 +4,10 @@ var ObjectId = require('mongodb').ObjectId;
     // show the home page (will also have our login links)
     app.get('/', function(req, res) {
       res.render(`login.ejs`)
-        // res.render('index.ejs');
     });
 
     app.get('/newRoom', function(req, res) {
       res.redirect(`/newRoom/${uuidV4()}`)
-        // res.render('index.ejs');
     });
     // rooms
     app.get("/newRoom/:room", (req, res) =>{
@@ -25,6 +23,11 @@ var ObjectId = require('mongodb').ObjectId;
           joined: "joined"
         })
   })
+
+  app.get('/404', function(req, res) {
+    res.render(`404.ejs`)
+  });
+
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -90,7 +93,7 @@ var ObjectId = require('mongodb').ObjectId;
     });
     app.get('/language', function(req, res) {
         db.collection('languages').find().toArray((err, result) => {
-          if (err) return console.log(err)
+          if (err) res.redirect('404.ejs')
           res.render('languages.ejs', {
             user : req.user,
             messages: result
@@ -98,24 +101,6 @@ var ObjectId = require('mongodb').ObjectId;
         })
     });
 
-  //   app.get('/profile', isLoggedIn, function(req, res) {
-  //     db.collection('messages').find().toArray((err, result) => {
-  //     db.collection('chat').find({
-  //       //to target specfic iuser ids
-  //       // _id: ObjectId(req.user._id)
-  //     }).toArray((err2, result2) => {
-  //     db.collection('anki').find().toArray((err3, result3) => {
-  //       if (err) return console.log(err)
-  //       res.render('profile.ejs', {
-  //         users : req.user,
-  //         messages: result,
-  //         chat: result2,
-  //         anki: result3
-  //       })
-  //       })
-  //       })
-  //     })
-  // });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -125,21 +110,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 // message board routes ===============================================================
 
-    // app.post('/messages', (req, res) => {
-    //   db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
-    //     if (err) return console.log(err)
-    //     console.log('saved to database')
-    //     res.redirect('/profile')
-    //   })
-    // })
-    app.post('/languagesSend', (req, res) => {
-      db.collection('languages').save({langauge: req.body.language, yourLanguage: req.body.yourLanguage}, (err, result) => {
-        if (err) return console.log(err)
-        console.log('saved to database')
-        res.redirect('/main')
-        console.log(req.body.target)
-      })
-    })
 
     app.put('/messages', (req, res) => {
       db.collection('messages')
@@ -165,28 +135,11 @@ var ObjectId = require('mongodb').ObjectId;
         name: req.user.local.name,
         language: req.body.language, 
         yourLanguage: req.body.yourLanguage}, (err, result) => {
-        if (err) return console.log(err)
+        if (err) res.redirect('404.ejs')
         console.log('saved to database')
         res.redirect('/main')
         console.log(req.body.target)
       })
-      // db.collection('languages')
-      // .findOneAndUpdate({_id: ObjectId(req.session.passport.user)}, {
-      //   $set: {
-      //     local :{
-      //       email: req.user.email,
-      //       password: req.user.password,
-      //       targetLanguage: req.body.language,
-      //       nativeLanguage: req.body.yourLanguage
-      //     }
-      //     // local.targetLanguage: req.body.language, local.nativelanguage: req.body.yourLanguage
-      //   }
-      // }, {
-      //   sort: {_id: -1},
-      // }, (err, result) => {
-      //   if (err) return res.send(err)
-      //   res.redirect('/main')
-      // })
     })
 
     
@@ -198,20 +151,6 @@ var ObjectId = require('mongodb').ObjectId;
       })
     })
 
-    app.put('/messagesThumbsDown', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-        $set: {
-          thumbUp:req.body.thumbUp - 1
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-    })
 
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {

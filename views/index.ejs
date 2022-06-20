@@ -132,13 +132,13 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <h3>326</h3>
+                                        <h3>0</h3>
                                         <span>total posts</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <h3>2456</h3>
+                                        <h3>0</h3>
                                         <span>total friends</span>
                                     </a>
                                 </li>
@@ -1189,11 +1189,11 @@
                     <div class="post-stats">
                         <ul>
                             <li>
-                                <h3>326</h3>
+                                <h3>0</h3>
                                 <span>total posts</span>
                             </li>
                             <li>
-                                <h3>2456</h3>
+                                <h3>0</h3>
                                 <span>total friends</span>
                             </li>
                         </ul>
@@ -1671,15 +1671,15 @@
                                     <div class="counter-stats">
                                         <ul id="counter">
                                             <li>
-                                                <h3 class="counter-value" data-count="546">0</h3>
+                                                <h3 class="counter-value" data-count="0">0</h3>
                                                 <h5>following</h5>
                                             </li>
                                             <li>
-                                                <h3 class="counter-value" data-count="26335">0</h3>
+                                                <h3 class="counter-value" data-count="0">0</h3>
                                                 <h5>likes</h5>
                                             </li>
                                             <li>
-                                                <h3 class="counter-value" data-count="6845">0</h3>
+                                                <h3 class="counter-value" data-count="0">0</h3>
                                                 <h5>followers</h5>
                                             </li>
                                         </ul>
@@ -4945,6 +4945,7 @@
                 </div>
                 <div id="accordion1" class="friend-list collapse show">
                     <ul>
+                        <% for(let i = 0; i < feedLimit; i++){ %>
                         <li class="friend-box user3">
                             <div class="media">
                                 <a class="popover-cls user-img" data-bs-toggle="popover" data-placement="bottom"
@@ -4954,67 +4955,12 @@
                                     <span class="available-stats"></span>
                                 </a>
                                 <div class="media-body">
-                                    <h5 class="user-name">Josephin water</h5>
-                                    <h6>alabma, USA</h6>
+                                    <h5 class="user-name"><%= matchedUsers[i].name%></h5>
+                                    <h6><%= matchedUsers[i].yourLanguage%></h6>
                                 </div>
                             </div>
                         </li>
-                        <li class="friend-box user4">
-                            <div class="media">
-                                <a class="popover-cls user-img" data-bs-toggle="popover" data-placement="right"
-                                    data-name="petey cruiser" data-img="/images/user-sm/4.jpg">
-                                    <img src="/images/user-sm/4.jpg" class="img-fluid blur-up lazyload bg-img"
-                                        alt="user">
-                                    <span class="available-stats offline"></span>
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="user-name">Petey Cruiser</h5>
-                                    <h6>alabma, USA</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="friend-box user5">
-                            <div class="media">
-                                <a class="popover-cls user-img" data-bs-toggle="popover" data-placement="right"
-                                    data-name="anna sthesia" data-img="/images/user-sm/5.jpg">
-                                    <img src="/images/user-sm/5.jpg" class="img-fluid blur-up lazyload bg-img"
-                                        alt="user">
-                                    <span class="available-stats online"></span>
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="user-name">Anna Sthesia</h5>
-                                    <h6>alabma, USA</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="friend-box user6">
-                            <div class="media">
-                                <a class="popover-cls user-img" data-bs-toggle="popover" data-placement="right"
-                                    data-name="paul molive" data-img="/images/user-sm/6.jpg">
-                                    <img src="/images/user-sm/6.jpg" class="img-fluid blur-up lazyload bg-img"
-                                        alt="user">
-                                    <span class="available-stats"></span>
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="user-name">Paul Molive</h5>
-                                    <h6>alabma, USA</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="friend-box user7">
-                            <div class="media">
-                                <a class="popover-cls user-img" data-bs-toggle="popover" data-placement="right"
-                                    data-name="anna mull" data-img="/images/user-sm/7.jpg">
-                                    <img src="/images/user-sm/7.jpg" class="img-fluid blur-up lazyload bg-img"
-                                        alt="user">
-                                    <span class="available-stats away"></span>
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="user-name">Anna Mull</h5>
-                                    <h6>alabma, USA</h6>
-                                </div>
-                            </div>
-                        </li>
+                        <%}%>
                     </ul>
                 </div>
             </div>

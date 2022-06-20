@@ -1,9 +1,26 @@
-body{
+/* body{
   padding-top:80px;
   word-wrap:break-word;
   text-align: center;
 }
 img{
   height: 200px;
+} */
+body{
+  background-color: #edf7fb;
 }
-
+section{
+  height: 400px;
+  width: 400px;
+  border: 1px solid rgb(148, 179, 195);
+  border-radius: 9px;
+}
+.centerThis{
+  /* text-align: center;
+  width: 30%; */
+  /* border: 1px solid rgb(68, 138, 161);
+  display: flex;
+  justify-content: space-around;
+  justify-items: center; */
+  
+}

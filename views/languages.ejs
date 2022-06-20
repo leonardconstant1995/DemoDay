@@ -5,42 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuoLect</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <form action="/language" method="post">
-        <label for="language">Select your Target Language</label>
+    <section>
+        <form action="/language" method="post" class="centerThis">
+            <label for="language">Select your Target Language</label>
+            
+            <select name="language" id="targetLanguages" >
+                <option value="English">English</option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Korean">Korean</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Russian">Russian</option>
+                <option value="Haitian Creole">Haitian Creole</option>
+            </select>
         
-        <select name="language" id="targetLanguages" >
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Vietnamese">Vietnamese</option>
-            <option value="Korean">Korean</option>
-            <option value="Dutch">Dutch</option>
-            <option value="Russian">Russian</option>
-            <option value="Haitian Creole">Haitian Creole</option>
-        </select>
-
-
-
-        <label for="yourLanguage">Select your Native Language</label>
-
-        <select name="yourLanguage" id="nativeLanguages" >
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Vietnamese">Vietnamese</option>
-            <option value="Korean">Korean</option>
-            <option value="Dutch">Dutch</option>
-            <option value="Russian">Russian</option>
-            <option value="Haitian Creole">Haitian Creole</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
-
+        
+        
+            <label for="yourLanguage">Select your Native Language</label>
+        
+            <select name="yourLanguage" id="nativeLanguages" >
+                <option value="English">English</option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Korean">Korean</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Russian">Russian</option>
+                <option value="Haitian Creole">Haitian Creole</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 
     <script src="/main.js" defer></script>
 </body>
