@@ -431,7 +431,7 @@
                                         data-feather="user"></i>
                                     <div class="media d-none d-sm-flex">
                                         <div class="user-img">
-                                            <img src="/images/user-sm/1.jpg"
+                                            <img src="/img/dog.jpg"
                                                 class="img-fluid blur-up lazyload bg-img" alt="user">
                                             <span class="available-stats online"></span>
                                         </div>
@@ -1428,7 +1428,7 @@
                                     data-feather="user"></i>
                                 <div class="media d-none d-sm-flex">
                                     <div class="user-img">
-                                        <img src="/images/user-sm/1.jpg"
+                                        <img src="/img/dog.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt="user">
                                         <span class="available-stats online"></span>
                                     </div>
@@ -1650,7 +1650,7 @@
                                 <a href="/profile" class="image-section">
                                     <div class="profile-img">
                                         <div>
-                                            <img src="/images/story/8.jpg"
+                                            <img src="/img/dog.jpg"
                                                 class="img-fluid blur-up lazyload bg-img" alt="profile">
                                         </div>
                                         <span class="stats">
@@ -1729,43 +1729,20 @@
                             <div class="suggestion-content ratio_115">
                                 <div class="slide-2 no-arrow default-space">
                                     <div>
+                                        <% for(let i = 0; i < feedLimit; i++){%>
+
                                         <div class="story-box">
                                             <div class="adaptive-overlay pink-overlay"></div>
                                             <div class="story-bg">
-                                                <img src="/images/story/2.jpg" class="img-fluid bg-img"
+                                                <img src="/img/cat.jpg" class="img-fluid bg-img"
                                                     data-adaptive-background='1' alt="">
                                             </div>
                                             <div class="story-content">
-                                                <h6>josephin water</h6>
+                                                <h6><%= matchedUsers[i].name%></h6>
                                                 <span>active now</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="story-box">
-                                            <div class="adaptive-overlay blue-overlay"></div>
-                                            <div class="story-bg">
-                                                <img src="/images/story/7.jpg" class="img-fluid bg-img"
-                                                    data-adaptive-background='1' alt="">
-                                            </div>
-                                            <div class="story-content">
-                                                <h6>josephin water</h6>
-                                                <span>active now</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="story-box">
-                                            <div class="adaptive-overlay skin-overlay"></div>
-                                            <div class="story-bg">
-                                                <img src="/images/story/1.jpg" class="img-fluid bg-img"
-                                                    data-adaptive-background='1' alt="">
-                                            </div>
-                                            <div class="story-content">
-                                                <h6>josephin water</h6>
-                                                <span>active now</span>
-                                            </div>
-                                        </div>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>

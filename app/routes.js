@@ -31,12 +31,34 @@ var ObjectId = require('mongodb').ObjectId;
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('users').find().toArray((err, result) => {
+        db.collection('languages').find().toArray((err, result) => {
           if (err) return console.log(err)
+          let userData = result.find(result => String(result.userId) == String(req.user._id))
+          let matchedUsers = []
+          let feedLimit = 5
+          
+          for(let i = 0; i < result.length; i++){
+            console.log("User data", userData.language, "result", result[i].yourLanguage)
+            if(String(userData.language) === String(result[i].yourLanguage)){
+              console.log("found a match")
+              matchedUsers.push(result[i])
+            }
+          }
+          console.log("Matched Users", matchedUsers)
+          console.log("MatchedUsers.length", matchedUsers.length)
+          if(matchedUsers.length === 0){
+            matchedUsers = result
+          }
+
+          if(matchedUsers.length < 5){
+            feedLimit = matchedUsers.length
+          }
+
+
           res.render('profileActivity.ejs', {
             user : req.user,
-            email: req.user
-            // ObjectId : req.user._id
+            feedLimit: feedLimit,
+            matchedUsers: matchedUsers
           })
         })
     });
@@ -68,7 +90,6 @@ var ObjectId = require('mongodb').ObjectId;
           res.render('index.ejs', {
             user : req.user,
             feedLimit: feedLimit,
-            // ObjectId : req.user._id
             matchedUsers: matchedUsers
           })
         })

@@ -2,33 +2,42 @@
 <html lang="en">
 <head>
     <title>DuoLect</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <h1 class="title">DuoLect</h1>
-    <p id="notification" hidden></p>
-    <div class="entry-modal" id="entry-modal">
-        <p>Create or Join Meeting</p>
-        
-        <div>
-            <button><a href="/newRoom">Create Room</a></button>
-            <form id="form" method="GET">
-                <input id="room-input" name="roomId" class="room-input" placeholder="Enter Room ID">
-                <button type="submit">Join Room</button>   
-            </form>
-        </div>
+    <div class="brand-logo">
+        <a href="/main">
+            <img src="/images/logo/duologo.png" alt="logo" class="img-fluid blur-up lazyload logo">
+        </a>
     </div>
-    <div class="meet-area">
-        <!-- Remote Video Element-->
-        <video id="remote-video"></video>
+    <section>
+        <div class="centerThis2">
+            <h1 class="title">DuoLect</h1>
+            <p id="notification" hidden></p>
+            <div class="entry-modal" id="entry-modal">
+                <p>Create or Join Meeting</p>
 
-        <!-- Local Video Element-->
-        <video id="local-video"></video>
-        <div class="meet-controls-bar">
-            <button onclick="startScreenShare()">Screen Share</button>
+                <div>
+                    <button><a href="/newRoom">Create Room</a></button>
+                    <form id="form" method="GET">
+                        <input id="room-input" name="roomId" class="room-input" placeholder="Enter Room ID">
+                        <button type="submit">Join Room</button>   
+                    </form>
+                </div>
+            </div>
+            <div class="meet-area">
+                <!-- Remote Video Element-->
+                <video id="remote-video"></video>
+
+                <!-- Local Video Element-->
+                <video id="local-video"></video>
+                <div class="meet-controls-bar">
+                    <button onclick="startScreenShare()">Screen Share</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>

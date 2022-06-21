@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuoLect</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"rel="stylesheet">
 </head>
 <body>
+    <div class="brand-logo">
+        <a href="/main">
+            <img src="/images/logo/duologo.png" alt="logo" class="img-fluid blur-up lazyload logo">
+        </a>
+    </div>
     <section>
         <form action="/language" method="post" class="centerThis">
             <label for="language">Select your Target Language</label>
-            
+
             <select name="language" id="targetLanguages" >
                 <option value="English">English</option>
                 <option value="French">French</option>
@@ -23,11 +30,11 @@
                 <option value="Russian">Russian</option>
                 <option value="Haitian Creole">Haitian Creole</option>
             </select>
-        
-        
-        
+
+
+
             <label for="yourLanguage">Select your Native Language</label>
-        
+
             <select name="yourLanguage" id="nativeLanguages" >
                 <option value="English">English</option>
                 <option value="French">French</option>
@@ -41,6 +48,7 @@
             </select>
             <button type="submit">Submit</button>
         </form>
+        <a href="/main"><button class="move">Return to Home</button></a>
     </section>
 
     <script src="/main.js" defer></script>

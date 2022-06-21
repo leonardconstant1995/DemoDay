@@ -8,19 +8,28 @@ img{
 } */
 body{
   background-color: #edf7fb;
+  font-family: "roboto";
 }
 section{
   height: 400px;
-  width: 400px;
-  border: 1px solid rgb(148, 179, 195);
+  width: 50%;
+  border: 2px solid rgb(148, 179, 195);
   border-radius: 9px;
+  margin: auto;
+  margin-top: 150px;
 }
 .centerThis{
-  /* text-align: center;
-  width: 30%; */
-  /* border: 1px solid rgb(68, 138, 161);
-  display: flex;
-  justify-content: space-around;
-  justify-items: center; */
-  
+ text-align: center;
+ margin-top: 170px;
+}
+.centerThis2{
+  text-align: center;
+  margin-top: 170px;
+  margin-top: 0;
+ }
+.move{
+  margin: 10px 0 0 400px;
+}
+img{
+  max-width: 100px;
 }
