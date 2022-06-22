@@ -33600,7 +33600,13 @@ section {
         -ms-flex: 0 0 80%;
             flex: 0 0 80%;
     max-width: 80%; }
+#targetLanguages{
+  margin-bottom:20px ;
 
+}
+/* .formClass{
+  width: 50%;
+} */
 /**=====================
     Favourite Page css start
 ==========================**/
