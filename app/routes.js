@@ -24,9 +24,6 @@ var ObjectId = require('mongodb').ObjectId;
         })
   })
 
-  app.get('/404', function(req, res) {
-    res.render(`404.ejs`)
-  });
 
 
     // PROFILE SECTION =========================
@@ -62,6 +59,7 @@ var ObjectId = require('mongodb').ObjectId;
           })
         })
     });
+
     app.get('/main', function(req, res) {
         db.collection('languages').find().toArray((err, result) => {
           if (err) return console.log(err)
@@ -114,7 +112,7 @@ var ObjectId = require('mongodb').ObjectId;
     });
     app.get('/language', function(req, res) {
         db.collection('languages').find().toArray((err, result) => {
-          if (err) res.redirect('404.ejs')
+          if (err) return console.log(err)
           res.render('languages.ejs', {
             user : req.user,
             messages: result
@@ -132,20 +130,6 @@ var ObjectId = require('mongodb').ObjectId;
 // message board routes ===============================================================
 
 
-    app.put('/messages', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-        $set: {
-          thumbUp:req.body.thumbUp + 1
-        }
-      }, {
-        sort: {_id: -1},
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-    })
 
     app.post('/language', (req, res) => {
       console.log(req.user, "LookHere!!!!!",req.body)
@@ -156,29 +140,14 @@ var ObjectId = require('mongodb').ObjectId;
         name: req.user.local.name,
         language: req.body.language, 
         yourLanguage: req.body.yourLanguage}, (err, result) => {
-        if (err) res.redirect('404.ejs')
+        if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/main')
         console.log(req.body.target)
       })
     })
 
-    
 
-    app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
-        if (err) return res.send(500, err)
-        res.send('Message deleted!')
-      })
-    })
-
-
-    app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
-        if (err) return res.send(500, err)
-        res.send('Message deleted!')
-      })
-    })
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
