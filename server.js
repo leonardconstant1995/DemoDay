@@ -11,6 +11,7 @@ const privateVapidKeys = "pqWCmaasnf131Egh4L4hNq3oujU8I03G00pLveduUD4";
 
 webPush.setVapidDetails('mailto:test@test.com', publicVapidKeys, privateVapidKeys)
 
+
 var app      = express();
 const server = require("http").Server(app)
 
